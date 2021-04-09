@@ -1,12 +1,13 @@
 // a shader variable
-let theShader;
+let theShader
 // let shaderTexture;
-
-
+let obj0
+let angle =0
 
 function preload(){
   // load the shader
   theShader = loadShader('shader.vert', 'shader.frag');
+  obj0 = loadModel('models/Dog.obj', true)
 }
 
 function setup() {
@@ -20,6 +21,7 @@ function setup() {
   // shaderTexture.noStroke();
   // x = -50;
   //  y = 0;
+  angleMode(DEGREES)
 }
 
 function light (){
@@ -31,12 +33,13 @@ function light (){
 
 
 function draw() {
+  //light()
   background(0);
   // shader() sets the active shader with our shader
   //shaderTexture.
 
   shader(theShader);
-  light()
+
   theShader.setUniform("u_resolution", [width, height]);
   theShader.setUniform("u_time", millis() / 1000.0);
   theShader.setUniform("u_mouse", [mouseX, map(mouseY, 0, height, height, 0)]);
@@ -54,12 +57,18 @@ function draw() {
   //   rotateY(theta * mouseX * 0.0001);
   //   theta += 0.05;
   // rect(0,0,width,height)
-  rotateX(0.3)
-  box(width/4)
+  // rotateX(0.3)
+  // box(width/4)
+  scale(2.5)
+  rotateZ(180)
+  rotateY(angle)
+  model(obj0)
   // pop();
 
   // //let ellipseFidelity = int(map(mouseX, 0, width, 8, 100));
   //   ellipse(260, 0, 200, 200, ellipseFidelity);
+  angle= angle +0.5
+
   }
 // function windowResized(){
 //   resizeCanvas(windowWidth, windowHeight);
