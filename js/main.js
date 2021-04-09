@@ -22,12 +22,21 @@ function setup() {
   //  y = 0;
 }
 
+function light (){
+  let dirX = (mouseX / width - 0.5) * 2;
+  let dirY = (mouseY / height - 0.5) * 2;
+  directionalLight(250, 250, 250, -dirX, -dirY, -1);
+  pointLight(100,20,50,-200,50,0)
+}
+
+
 function draw() {
   background(0);
   // shader() sets the active shader with our shader
   //shaderTexture.
-  shader(theShader);
 
+  shader(theShader);
+  light()
   theShader.setUniform("u_resolution", [width, height]);
   theShader.setUniform("u_time", millis() / 1000.0);
   theShader.setUniform("u_mouse", [mouseX, map(mouseY, 0, height, height, 0)]);
