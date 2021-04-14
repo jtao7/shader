@@ -33,8 +33,8 @@ function light (){
 
 
 function draw() {
-  //light()
-  background(0);
+  light()
+  background(50);
   // shader() sets the active shader with our shader
   //shaderTexture.
 
