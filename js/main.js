@@ -1,6 +1,6 @@
 // a shader variable
 let theShader
-let tex
+// let shaderTexture;
 let obj0
 let angle =0
 
@@ -15,11 +15,10 @@ function setup() {
   createCanvas(innerWidth, innerHeight, WEBGL);
   noStroke();
   // // initialize the createGraphics layers
-  tex = createGraphics(710, 400, WEBGL);
-
-  // turn off the createGraphics layers stroke
-  tex.noStroke();
-  tex.background(255)
+  // shaderTexture = createGraphics(710, 400, WEBGL);
+  //
+  // // turn off the createGraphics layers stroke
+  // shaderTexture.noStroke();
   // x = -50;
   //  y = 0;
   angleMode(DEGREES)
@@ -39,7 +38,7 @@ function draw() {
   // shader() sets the active shader with our shader
   //shaderTexture.
 
-  tex.shader(theShader);
+  shader(theShader);
 
   theShader.setUniform("u_resolution", [width, height]);
   theShader.setUniform("u_time", millis() / 1000.0);
@@ -48,9 +47,9 @@ function draw() {
   // // rect gives us some geometry on the screen
   // shaderTexture.rect(0,0,width, height);
 
-  tex.model(obj0)
+
   //pass the shader as a texture
-  texture(tex);
+  // texture(shaderTexture);
   // translate(-150, 0, 0);
   //   push();
   //   rotateZ(theta * mouseX * 0.0001);
